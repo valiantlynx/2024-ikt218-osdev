@@ -9,16 +9,6 @@ header_start:
     dd header_end - header_start 	                                ; Header length
     dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_start)) ; Checksum
 
-;align 8
-;framebuffer_tag_start:
-;    dw 5                                              ; type
-;    dw 1                                              ; flags
-;    dd framebuffer_tag_end - framebuffer_tag_start    ; size
-;    dd 800                                            ; width
-;    dd 600                                            ; height
-;    dd 32                                             ; depth
-;framebuffer_tag_end:
-
 align 8
     ; Required end tag:
     dw 0	; type
