@@ -5,9 +5,10 @@
 
 #define VGA_WIDTH 80
 
+
 void putc(char c)
 {
-    // print_char is a function that prints a single character on the screen.
+    // Assuming print_char is a function that prints a single character on the screen.
     print_char(c);
 }
 
@@ -101,10 +102,11 @@ void printf(const char *fmt, ...)
     va_end(args);
 }
 
-//writes a character to the VGA text mode buffer.
+/*
+// Replace print_char with the actual function that writes a character to the VGA text mode buffer.
 void print_char(char c)
 {
-    // `vga_buffer` is a pointer to the VGA text mode buffer
+    // Assuming `vga_buffer` is a pointer to the VGA text mode buffer
     // and `cursor_x` and `cursor_y` are the current coordinates on the screen.
     static uint16_t *vga_buffer = (uint16_t *)0xB8000;
     static uint16_t cursor_x = 0, cursor_y = 0;
@@ -131,3 +133,5 @@ void print_char(char c)
         cursor_y++;
     }
 }
+*/
+

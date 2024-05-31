@@ -1,4 +1,4 @@
-#include "stdio.h" // use printf or any other standard I/O
+#include "stdio.h" // Assuming you use printf or any other standard I/O
 
 void panic(const char *message)
 {

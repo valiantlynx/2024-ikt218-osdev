@@ -4,7 +4,7 @@
 #include "stdint.h"
 #include "stdbool.h"
 
-// PIT related macros
+// PIT (Programmable Interval Timer) related macros
 #define PIT_CMD_PORT 0x43
 #define PIT_CHANNEL0_PORT 0x40
 #define PIT_CHANNEL1_PORT 0x41
@@ -23,7 +23,9 @@
 #define DIVIDER (PIT_BASE_FREQUENCY / TARGET_FREQUENCY)
 #define TICKS_PER_MS (TARGET_FREQUENCY / TARGET_FREQUENCY)
 
+
 void init_pit();
+void pit_handler();
 void sleep_interrupt(uint32_t milliseconds);
 void sleep_busy(uint32_t milliseconds);
 #endif

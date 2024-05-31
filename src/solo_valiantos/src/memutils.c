@@ -1,6 +1,4 @@
-#include "memory.h" 
-#include "stdint.h"
-#include "stddef.h" 
+//memutils.c
 #include "memutils.h"
 
 void *kmemcpy(void *dest, const void *src, size_t count)
@@ -16,22 +14,22 @@ void *kmemcpy(void *dest, const void *src, size_t count)
     return dest;
 }
 
-void *memset16(void *ptr, uint16_t value, size_t num)
-{
-    uint16_t *p = (uint16_t *)ptr;
-    while (num--)
-    {
-        *p++ = value;
-    }
-    return ptr;
-}
-
 void *kmemset(void *ptr, int value, size_t num)
 {
     unsigned char *p = (unsigned char *)ptr;
     while (num--)
     {
         *p++ = (unsigned char)value;
+    }
+    return ptr;
+}
+
+void *kmemset16(void *ptr, uint16_t value, size_t num)
+{
+    uint16_t *p = (uint16_t *)ptr;
+    while (num--)
+    {
+        *p++ = value;
     }
     return ptr;
 }

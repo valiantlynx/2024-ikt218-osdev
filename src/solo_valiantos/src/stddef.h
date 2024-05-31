@@ -5,7 +5,7 @@
 
 #define NULL ((void *)0)
 
-// size_t based on your architecture
+// Define size_t based on your architecture
 #if !defined(__size_t) && !defined(_SIZE_T_DEFINED)
 #define __size_t
 #define _SIZE_T_DEFINED
@@ -15,10 +15,10 @@ typedef unsigned __int64 size_t;
 #elif defined(_WIN32)
 typedef unsigned int size_t;
 #else
-// this is typically accurate for most Unix-like systems
+// The following is typically accurate for most Unix-like systems
 typedef unsigned long size_t;
 #endif
 
-#endif
+#endif // !defined(__size_t) && !defined(_SIZE_T_DEFINED)
 
-#endif
+#endif // _STDDEF_H
