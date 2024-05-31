@@ -67,4 +67,4 @@ struct multiboot_mmap_entry
   uint32_t type;
 } __attribute__((packed));
 
-#endif // MULTIBOOT_H
+#endif

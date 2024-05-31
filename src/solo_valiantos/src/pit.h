@@ -4,7 +4,7 @@
 #include "stdint.h"
 #include "stdbool.h"
 
-// PIT (Programmable Interval Timer) related macros
+// PIT related macros
 #define PIT_CMD_PORT 0x43
 #define PIT_CHANNEL0_PORT 0x40
 #define PIT_CHANNEL1_PORT 0x41

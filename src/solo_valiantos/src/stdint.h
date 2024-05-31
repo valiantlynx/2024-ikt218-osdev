@@ -1,4 +1,3 @@
-// stdint.h
 #ifndef _STDINT_H_
 #define _STDINT_H_
 
@@ -14,4 +13,4 @@ typedef unsigned long int uint32_t;
 typedef signed long long int int64_t;
 typedef unsigned long long int uint64_t;
 
-#endif // _STDINT_H_
+#endif

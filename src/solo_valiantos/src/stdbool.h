@@ -1,4 +1,3 @@
-// stdbool.h
 #ifndef _STDBOOL_H_
 #define _STDBOOL_H_
 
@@ -18,6 +17,6 @@ typedef char bool;
 #define false 0
 #endif
 
-#endif // __cplusplus
+#endif 
 
-#endif // _STDBOOL_H_
+#endif

@@ -24,4 +24,4 @@ extern void x86_div64_32(uint64_t, uint32_t, uint64_t *, uint32_t *);
 #define PRINTF_LENGTH_LONG 3
 #define PRINTF_LENGTH_LONG_LONG 4
 
-#endif // STDIO_H
+#endif

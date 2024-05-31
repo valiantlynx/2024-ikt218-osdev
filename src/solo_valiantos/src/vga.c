@@ -79,10 +79,9 @@ void print(const char* s){
     }
 }
 void print_char(char c) {
-    // Assuming 'vga', 'line', 'column', 'width', and 'currentColor' are properly defined elsewhere
     switch(c){
         case '\n':
-            newLine();  // You must define this function to handle newline correctly
+            newLine();
             break;
         case '\r':
             column = 0;

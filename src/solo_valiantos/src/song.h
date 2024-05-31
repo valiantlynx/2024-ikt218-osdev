@@ -9,27 +9,26 @@
 //#include "SongPlayer.h"
 
 
-// Define a struct to represent a single musical note
+//  a single musical note
 typedef struct
 {
-    uint32_t frequency; // The frequency of the note in Hz (e.g., A4 = 440 Hz)
-    uint32_t duration;  // The duration of the note in milliseconds
+    uint32_t frequency; // freq of the note in Hz (e.g., A4 = 440 Hz)
+    uint32_t duration;  // duration of note in ms
 } Note;
 
-// Define a struct to represent a song
+//a song
 typedef struct
 {
-    Note *notes;     // Pointer to an array of Note structs representing the song
-    uint32_t length; // The number of notes in the song
+    Note *notes;     // Pointer to an array of Note structs
+    uint32_t length; // no. of notes in the song
 } Song;
 
-// Define a struct to represent a song player
+// a song player
 typedef struct
 {
-    void (*play_song)(Song *song); // Function pointer to a function that plays a song
+    void (*play_song)(Song *song); // Func pointer to a func that plays a song
 } SongPlayer;
 
-// Function prototype for creating a new SongPlayer instance
 // Returns a pointer to a newly created SongPlayer object
 SongPlayer *create_song_player();
 void play_song_impl(Song *song);
@@ -179,7 +178,7 @@ static Note battlefield_1942_theme[] = {
     {B4, 300},
     {G4, 500},
 
-    // Repeat or modify as needed
+    // TODO: Repeat or modify as needed
     // ...
 
     // End note

@@ -11,27 +11,18 @@
 
 void enable_speaker()
 {
-    // Read the current state of the PC speaker control register
+    // current state of the PC speaker control register
     uint8_t speaker_state = inb(PC_SPEAKER_PORT);
-    /*
-    Bit 0: Speaker gate
-            0: Speaker disabled
-            1: Speaker enabled
-    Bit 1: Speaker data
-            0: Data is not passed to the speaker
-            1: Data is passed to the speaker
-    */
-    // Check if bits 0 and 1 are not set (0 means that the speaker is disabled)
+    // if bits 0 and 1 are not set (0 means that the speaker is disabled)
     if (speaker_state != (speaker_state | 3))
     {
-        // If bits 0 and 1 are not set, enable the speaker by setting bits 0 and 1 to 1
+        // If bits 0 and 1 are not set, set bits 0 and 1 to 1
         outb(PC_SPEAKER_PORT, speaker_state | 3);
     }
 }
 
 void disable_speaker()
 {
-    // Turn off the PC speaker
     uint8_t speaker_state = inb(PC_SPEAKER_PORT);
     outb(PC_SPEAKER_PORT, speaker_state & 0xFC);
 }
@@ -53,12 +44,10 @@ void play_sound(uint32_t frequency)
 
 void stop_sound()
 {
-    // Disable the speaker
     disable_speaker();
 }
 
-extern uint32_t tick; // Declare the variable 'tick' before using it
-
+extern uint32_t tick;
 void play_song_impl(Song *song)
 {
     uint32_t start_tick = tick;
@@ -69,9 +58,9 @@ void play_song_impl(Song *song)
         uint32_t note_end_tick = start_tick + note.duration;
         while (tick < note_end_tick)
         {
-            // Wait for the note duration to pass
+            // Wait note duration to pass
         }
-        disable_speaker();          // Optionally turn off the speaker between notes
+        disable_speaker(); 
         start_tick = note_end_tick; // Update start_tick to the end of the current note
     }
 }

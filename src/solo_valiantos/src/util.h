@@ -18,4 +18,4 @@ struct InterruptRegisters{
     uint32_t eip, csm, eflags, useresp, ss;
 };
 
-#endif // UTIL_H
+#endif
