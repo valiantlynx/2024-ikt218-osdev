@@ -2,9 +2,9 @@ extern "C"
 {
 #include "stdint.h"
 #include "stdio.h"
-#include "stdlib.h" // For malloc and free
-#include "memory.h" // Assuming it's part of your custom kernel headers
-#include "stddef.h" // For size_t
+#include "stdlib.h"
+#include "memory.h" 
+#include "stddef.h"
 #include "string.h"
 #include "pit.h"
 #include "vga.h"
@@ -15,7 +15,7 @@ extern "C"
 #include "util.h"
 #include "memutils.h"
 #include "memory.h"
-#include "interrupts.h" // Include the SongPlayer header
+#include "interrupts.h"
 #include "../../solo_valiantos/src/apps/song/include/song/song.h"
 }
 
@@ -46,13 +46,13 @@ void *operator new(size_t size)
 // Add sized-deallocation functions
 void operator delete(void *ptr, size_t size) noexcept
 {
-    (void)size; // Size parameter is unused, added to match required signature
+    (void)size; //unused, added to match required signature
     free(ptr);
 }
 
 void operator delete[](void *ptr, size_t size) noexcept
 {
-    (void)size; // Size parameter is unused, added to match required signature
+    (void)size; // unused, added to match required signature
     free(ptr);
 }
 
@@ -66,9 +66,9 @@ int kernel_main()
     void *memory3 = malloc(13331);
     char *memory4 = new char[1000]();
 
-    // External declarations if they are defined in other files
-    // extern Note music_1[];          // Ensure this is defined and accessible
-    extern uint32_t music_1_length; // If maintained, or use sizeof as shown
+    //  External declarations if they are defined in other files
+    // // extern Note music_1[];          // Ensure this is defined and accessible
+    extern uint32_t music_1_length; // If maintained, or use sizeof
 
     Song *songs[] = {
         new Song({music_1, sizeof(music_1) / sizeof(Note)}),
@@ -81,12 +81,12 @@ int kernel_main()
 
     uint32_t n_songs = sizeof(songs) / sizeof(Song *);
 
-    SongPlayer *player = create_song_player(); // Setup the song player
+    SongPlayer *player = create_song_player(); // Begin setup the song player
 
     for (int count = 0; count < 1; count++)
-    { // Outer loop to run n times
+    { 
         for (uint32_t i = 0; i < n_songs; i++)
-        { // Inner loop to iterate through songs
+        { // loop to iterate through songs for n outer loop times
             printf("Playing Song...\n");
             player->play_song(songs[i]);
             printf("Finished playing the song.\n");

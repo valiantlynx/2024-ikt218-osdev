@@ -1,16 +1,10 @@
-//
-// isr.h -- Interface and structures for high level interrupt service routines.
-// Part of this code is modified from Bran's kernel development tutorials.
-// Rewritten for JamesM's kernel development tutorials.
-//
-
 #ifndef ISR_H
 #define ISR_H
 
 #include "stdint.h"
 
 
-// Registers struct pushed by pusha and by interrupt handlers
+// Registers struct 
 typedef struct registers
 {
    uint32_t ds;                                     // Data segment selector
@@ -37,8 +31,8 @@ typedef struct registers
 #define IRQ14 0x2E // Primary ATA Hard Disk
 #define IRQ15 0x2F // Secondary ATA Hard Disk
 
-// Function prototype for ISR and IRQ handlers
-typedef void (*isr_t)(registers_t*); // Function pointer type for handlers
+// prototype for ISR and IRQ handlers
+typedef void (*isr_t)(registers_t*);
 void register_interrupt_handler(uint8_t n, isr_t handler);
 
-#endif // ISR_H
+#endif

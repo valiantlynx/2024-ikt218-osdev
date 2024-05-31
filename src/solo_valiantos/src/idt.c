@@ -168,20 +168,20 @@ void irq_uninstall_handler(int irq){
 
 void irq_handler(struct InterruptRegisters *regs)
 {
-    // Acknowledge the interrupt to the PICs, especially if it's above 40 (slave PIC)
+    // Acknowledge the interrupt to the PICs, if it's above 40 (slave PIC)
     if (regs->int_no >= 40)
     {
-        outPortB(0xA0, 0x20); // Send reset signal to the slave PIC.
+        outPortB(0xA0, 0x20); // reset signal to the slave PIC.
     }
-    outPortB(0x20, 0x20); // Send reset signal to the master PIC.
+    outPortB(0x20, 0x20); // else reset signal to the master PIC.
 
     // Switch statement to handle specific interrupts
     switch (regs->int_no)
     {
-    case 32: // IRQ0: Timer interrupt
+    case 32: // IRQ0(Timer interrupt)
         pit_handler();
         break;
-    case 33: // IRQ1: Keyboard interrupt
+    case 33: // IRQ1(Keyboard interrupt)
         if (irq_routines[regs->int_no - 32])
         {
             ((void (*)(struct InterruptRegisters *))irq_routines[regs->int_no - 32])(regs);
@@ -195,12 +195,12 @@ void irq_handler(struct InterruptRegisters *regs)
         // Default behavior for unregistered interrupts
         if (irq_routines[regs->int_no - 32])
         {
-            // Call the custom handler if one is registered
+            // custom handler if one is registered
             ((void (*)(struct InterruptRegisters *))irq_routines[regs->int_no - 32])(regs);
         }
         else
         {
-            // Or handle the unexpected interrupt (e.g., log it)
+            // TODO: Or handle the unexpected interrupt
             printf("Unhandled interrupt: %d\n", regs->int_no);
         }
         break;

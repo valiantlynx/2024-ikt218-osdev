@@ -1,4 +1,3 @@
-; io.asm
 global inb
 global outb
 

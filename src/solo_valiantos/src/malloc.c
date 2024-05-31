@@ -1,5 +1,3 @@
-// malloc.c
-
 #include "memory.h"
 #include "stdint.h"
 #include "stdlib.h" // For malloc
@@ -16,7 +14,6 @@ uint32_t pheap_end = 0;
 uint8_t *pheap_desc = 0;
 uint32_t memory_used = 0;
 
-// Initialize the kernel memory manager
 void init_kernel_memory(uint32_t *kernel_end)
 {
     last_alloc = kernel_end + 0x1000;
@@ -29,7 +26,6 @@ void init_kernel_memory(uint32_t *kernel_end)
     printf("Kernel heap starts at 0x%x\n", last_alloc);
 }
 
-// Print the current memory layout
 void print_memory_layout()
 {
     printf("Memory used: %d bytes\n", memory_used);
@@ -40,7 +36,6 @@ void print_memory_layout()
     printf("PHeap start: 0x%x\nPHeap end: 0x%x\n", pheap_begin, pheap_end);
 }
 
-// Free a block of memory
 void free(void *mem)
 {
     alloc_t *alloc = (mem - sizeof(alloc_t));
@@ -48,18 +43,17 @@ void free(void *mem)
     alloc->status = 0;
 }
 
-// Free a block of page-aligned memory
 void pfree(void *mem)
 {
     if (mem < pheap_begin || mem > pheap_end)
         return;
 
-    // Determine the page ID
+    // page ID
     uint32_t ad = (uint32_t)mem;
     ad -= pheap_begin;
     ad /= 4096;
 
-    // Set the page descriptor to free
+    // page descriptor to free
     pheap_desc[ad] = 0;
 }
 
@@ -79,7 +73,6 @@ char *pmalloc(size_t size)
     return 0;
 }
 
-// Allocate a block of memory
 void *malloc(size_t size)
 {
     if (!size)
@@ -101,8 +94,7 @@ void *malloc(size_t size)
             mem += 4;
             continue;
         }
-        // If the block is not allocated and its size is big enough,
-        // adjust its size, set the status, and return the location.
+        // If the block is not allocated and its size is big enough,adjust its size, set the status, and return the location.
         if (a->size >= size)
         {
             a->status = 1;
@@ -111,8 +103,7 @@ void *malloc(size_t size)
             memory_used += size + sizeof(alloc_t);
             return (char *)(mem + sizeof(alloc_t));
         }
-        // If the block is not allocated and its size is not big enough,
-        // add its size and the sizeof(alloc_t) to the pointer and continue.
+        // If the block is not allocated and its size is not big enough, add its size and the sizeof(alloc_t) to the pointer and continue.
         mem += a->size;
         mem += sizeof(alloc_t);
         mem += 4;

@@ -73,7 +73,7 @@ void initKeyboard(){
 }
 
 void keyboardHandler(struct InterruptRegisters *regs){
-    unsigned char scanCode = inPortB(0x60) & 0x7F; //What key is pressed
+    unsigned char scanCode = inPortB(0x60) & 0x7F; //key pressed
     char press = inPortB(0x60) & 0x80; //Press down, or released
 
     switch(scanCode){
@@ -94,7 +94,7 @@ void keyboardHandler(struct InterruptRegisters *regs){
         case 88:
             break;
         case 42:
-            //shift key
+            // shift key 
             if (press == 0){
                 capsOn = true;
             }else{

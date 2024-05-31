@@ -22,12 +22,12 @@ void isrHandler(registers_t *regs)
     }
 }
 
-// This handler is called by your low-level assembly interrupt stubs.
+// is called by your low-level assembly interrupt stubs.
 void isr_handler_template(registers_t *regs)
 {
     uint8_t int_no = regs->int_no;
     if (interruptHandlers[int_no])
-    { // Corrected to use interruptHandlers
+    { //use interruptHandlers
         interruptHandlers[int_no](regs);
     }
 }
