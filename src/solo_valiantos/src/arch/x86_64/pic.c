@@ -1,6 +1,6 @@
 
-#include "pic.h"
-#include "io.h" // this contains outb and inb functions
+#include "interrupts/pic/pic.h"
+#include "interrupts/io/io.h" // this contains outb and inb functions
 
 #define PIC1         0x20
 #define PIC2         0xA0

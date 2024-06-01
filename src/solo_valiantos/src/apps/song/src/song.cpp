@@ -2,9 +2,9 @@
 extern "C"
 {
 #include "../include/song/song.h"
-#include "../src/pit.h"
-#include "../src/io.h"
-#include "../src/stdio.h"
+#include "../include/interrupts/pit/pit.h"
+#include "../include/interrupts/io/io.h"
+#include "../include/libc/stdio.h"
 }
 
 

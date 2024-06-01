@@ -1,7 +1,7 @@
 
-#include "irq.h"
-#include "idt.h"
-#include "keyboard.h"
+#include "interrupts/irq/irq.h"
+#include "interrupts/idt/idt.h"
+#include "drivers/keyboard.h"
 
 
 // Handler prototypes can be implemented in assembly and then call these C functions

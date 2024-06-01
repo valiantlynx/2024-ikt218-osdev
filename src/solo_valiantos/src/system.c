@@ -1,4 +1,4 @@
-#include "stdio.h"
+#include "libc/stdio.h"
 
 void panic(const char *message)
 {

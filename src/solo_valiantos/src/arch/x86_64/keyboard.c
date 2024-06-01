@@ -1,6 +1,6 @@
-#include "keyboard.h"
-#include "io.h" // For port I/O functions
-#include "irq.h" // For registering IRQ handlers
+#include "drivers/keyboard.h"
+#include "interrupts/io/io.h" // For port I/O functions
+#include "interrupts/irq/irq.h" // For registering IRQ handlers
 
 #define KEYBOARD_DATA_PORT 0x60
 

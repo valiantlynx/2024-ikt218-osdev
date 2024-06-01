@@ -1,5 +1,5 @@
 
-#include "isr.h"
+#include "interrupts/isr/isr.h"
 #include "terminal.h" // screen writing utility
 
 void isr0() {

@@ -56,29 +56,48 @@ set(OS_KERNEL_LINKER "${CMAKE_CURRENT_SOURCE_DIR}/src/arch/${OS_ARCH_TARGET}/lin
 
 # Add executable target for the kernel
 add_executable(uiaos-kernel 
-	src/multiboot2.asm
-	src/kernel.c 
-	src/kernel.cpp 
-	src/vga.c 
-	src/idt.c 
-	src/util.c
-	src/idt.asm
-	src/vga.c
-	src/gdt.asm
-	src/gdt.c
-	src/keyboard.c
-	src/timer.c
-	src/stdio.c
-	src/memory.c
-	src/malloc.c
-	src/memutils.c
-	src/system.c 
-	src/pit.c
-	src/io.c
-	src/isr.c
-	#src/SongPlayer.cpp
-	src/string.c
+	src/multiboot2.asm # TODO: Add multiboot2 support
+    src/kernel.c
+	src/kernel.cpp
+	
+	# global descriptor table
+	src/gdt/gdt.c
+	src/gdt/gdt.asm
+
+	# interrupts 
+	# src/interrupts/isr/isr.asm		#(interrupt service routines)
+	src/interrupts/isr/isr.c		
+	src/interrupts/idt/idt.c 		#(interrupt descriptor table)
+	src/interrupts/idt/idt.asm
+	src/interrupts/io/io.c
+	# src/interrupts/io/io.asm
+	# src/interrupts/pic/pic.c
+	# src/interrupts/irq/irq.c
+
+	# programmable interval timer
+	src/interrupts/pit/pit.c
+	src/interrupts/irq/timer.c
+
+	# memory
+	src/memory/memory.c
+	src/memory/malloc.c
+	src/memory/memutils.c
+
+
+	# music player
 	src/apps/song/src/song.cpp
+
+	# drivers
+	src/drivers/keyboard.c
+	src/drivers/vga.c
+
+	#miscallenious
+	src/util.c
+	src/system.c 
+
+	#libc functions:
+	src/lib_src/stdio.c
+	src/lib_src/string.c
 )
 
 # Include directories for the kernel target
