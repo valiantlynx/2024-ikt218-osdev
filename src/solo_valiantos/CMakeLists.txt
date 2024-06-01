@@ -71,7 +71,7 @@ add_executable(uiaos-kernel
 	src/interrupts/idt/idt.asm
 	src/interrupts/io/io.c
 	# src/interrupts/io/io.asm
-	# src/interrupts/pic/pic.c
+	src/interrupts/pic/pic.c
 	# src/interrupts/irq/irq.c
 
 	# programmable interval timer
